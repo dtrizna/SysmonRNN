@@ -1,6 +1,8 @@
 # Goal of this repository
 
-Provide toolkit to power Infosec with Data Science techniques. This particular repository contains all necessary code to perform preprocessing of Sysmon Events and supply it to multiple Recurrent Neural Network architectures.
+Provide toolkit to power Infosec with Data Science techniques.  
+
+This particular repository contains all necessary code to perform preprocessing of Sysmon Events and supply them to Recurrent Neural Network.
 
 # Sysmon Event example
 ```
@@ -35,6 +37,8 @@ Provide toolkit to power Infosec with Data Science techniques. This particular r
 
 # RNN
 Most efficient RNN model:
+![alt text](data/rnn_architecture.png =100x20 "Selected RNN model")
+
 ```
 model = keras.models.Sequential([
             keras.layers.Conv1D(filters=64, kernel_size=3, activation='relu', input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
@@ -46,4 +50,3 @@ model = keras.models.Sequential([
 ])
 return model
 ```
-![alt text](data/rnn_architecture.png "Selected RNN model")
