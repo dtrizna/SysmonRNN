@@ -37,7 +37,7 @@ This particular repository contains all necessary code to perform preprocessing 
 
 # RNN
 Most efficient RNN model:  
-<img src="data/rnn_architecture.png" width="1200" height="1000">
+<img src="data/rnn_architecture.png" width="1000" height="800">
 
 ```
 model = keras.models.Sequential([
