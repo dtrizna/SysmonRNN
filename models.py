@@ -12,7 +12,8 @@ METRICS = [
     # Recall: (TP) / (TP+FN)
     # what proportion of actual Positives is correctly classified
     keras.metrics.Recall(name='recall'),
-    keras.metrics.AUC(name='auc')
+    keras.metrics.AUC(name='auc'),
+    keras.metrics.Accuracy(name='accuracy')
     ]
 
 
@@ -29,7 +30,7 @@ def model_simplest(MAX_TIMESTEPS, OH_DIMENSION):
 def model_dd(MAX_TIMESTEPS, OH_DIMENSION):
     model = keras.models.Sequential([
     keras.layers.LSTM(32, dropout=0.2, recurrent_dropout=0.2, input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
-    keras.layers.Dropout(0.5),
+    #keras.layers.Dropout(0.5),
     keras.layers.Dense(32, activation='relu'),
     keras.layers.Dense(1, activation='sigmoid')
     ])
@@ -41,7 +42,7 @@ def model_deep(MAX_TIMESTEPS, OH_DIMENSION):
     keras.layers.LSTM(128, dropout=0.2, recurrent_dropout=0.2, input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
     #keras.layers.Dropout(0.5),
     keras.layers.Dense(128, activation='relu'),
-    keras.layers.Dropout(0.5),
+    #keras.layers.Dropout(0.5),
     keras.layers.Dense(16, activation='relu'),
     keras.layers.Dense(1, activation='sigmoid')
     ])
@@ -53,9 +54,9 @@ def model_deeper(MAX_TIMESTEPS, OH_DIMENSION):
     keras.layers.LSTM(128, dropout=0.2, recurrent_dropout=0.2, 
                       input_shape=[MAX_TIMESTEPS, OH_DIMENSION], return_sequences=True),
     keras.layers.LSTM(128, dropout=0.2, recurrent_dropout=0.2, input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
-    keras.layers.Dropout(0.5),
+    #keras.layers.Dropout(0.5),
     keras.layers.Dense(128, activation='relu'),
-    keras.layers.Dropout(0.5),
+    #keras.layers.Dropout(0.5),
     keras.layers.Dense(16, activation='relu'),
     keras.layers.Dense(1, activation='sigmoid')
     ])
@@ -67,7 +68,7 @@ def model_bidir(MAX_TIMESTEPS, OH_DIMENSION):
       keras.layers.Bidirectional(
           keras.layers.LSTM(32, dropout=0.2, recurrent_dropout=0.2, input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
       ),
-      keras.layers.Dropout(0.5),
+      #keras.layers.Dropout(0.5),
       keras.layers.Dense(32, activation='relu'),
       keras.layers.Dense(1, activation='sigmoid')
       ])
