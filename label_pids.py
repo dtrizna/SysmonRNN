@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_feather('logs.ft')
+df = pd.read_feather('data/logs.ft')
 fields = ['UtcTime', 'ProcessId', 'EventID', 'User', 'Image', 'ImageLoaded', 'CommandLine',
             'ParentImage', 'ParentCommandLine', 'DestinationPort', 'Protocol', 'QueryName', 'TargetFilename', 'TargetObject', 'raw']
 newdf = df[fields]
@@ -12,10 +12,11 @@ newdf = newdf[~newdf.ProcessId.isna()]
 newdf.drop(newdf[newdf.EventID == '5'].index, inplace=True)
 
 for name, df in newdf.groupby('ProcessId'):
-    pp = ["\n|||   PID: ", name,', ', df.Image.unique()[0]]
+    pp = ["\n|||   PID: ", name,'\n', df.Image.unique()[0]]
     print(''.join(pp))
     print('\n'.join([x for x in df.CommandLine.unique() if x is not None]))
     print('\n'.join([x for x in df.ParentCommandLine.unique() if x is not None]))
+    print()
     a = input()
     if 'm' in a:
         with open('pid_malicious.lst','a') as f:
