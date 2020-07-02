@@ -1,0 +1,13 @@
+malicious
+8216: netstat enum
+4556: powershell enc command
+1580: whoami.exe /groups
+2204: browser_broker embedding
+1396: fodhelper (1 out of 2)
+
+valid
+7236: edge.exe
+1532: backgroundtaskhost.exe
+2520: dllhost loads
+8636: dllhost loads
+8740: svchost.exe
