@@ -22,8 +22,6 @@ def model_simplest(MAX_TIMESTEPS, OH_DIMENSION):
     keras.layers.LSTM(32, dropout=0.2, recurrent_dropout=0.2, input_shape=[MAX_TIMESTEPS, OH_DIMENSION]),
     keras.layers.Dense(units=1, activation='sigmoid')
     ])
-
-    model_simplest.compile(optimizer='adam', loss='binary_crossentropy', metrics=METRICS)
     return model_simplest
 
 
